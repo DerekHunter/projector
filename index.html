@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html ng-app = "hoursTracker">
+<head>
+	<title>Hours Tracker</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Bootstrap -->
+	<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+	<link href="css/main.css" rel="stylesheet" media="screen">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+	<script src="js/main.js"></script>
+</head>
+<body>
+	<h1>Projects</h1>
+	<div ng-controller = "projectController as projectList">
+		<ul>
+			<div ng-repeat="project in projectList.projects">
+				<div ng-if="!project.done">
+					<li>
+						<input type="checkbox" class="checkbox" ng-model = "project.done">
+						<span> {{project.name}}</span>	
+					</li>
+				</div>
+			</div>
+		</ul>
+		<form class = "form-inline" ng-submit="projectList.addProject()">
+			<input type="text" ng-model="projectList.projectName"  size="30" placeholder="add new project here">
+			<input type="submit" class = btn value="add">
+		</form>
+	</div>
+
+	<script src="http://code.jquery.com/jquery.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+</body>
+</html>
