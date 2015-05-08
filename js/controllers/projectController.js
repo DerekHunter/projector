@@ -1,12 +1,18 @@
-angular.module('app').controller('projectController', function(){
-	var projectList = this;
-	projectList.projects = [
-		{name:'iosRunning', done:true},
-		{name:'narwhal', done:false}];
+angular.module('app').controller('projectController', function($scope, projects){
+	
+	var projectController = this;
+	$scope.projects = projects;
+	$scope.projectController = this;
 
-	projectList.addProject = function() {
-		projectList.projects.push({name:projectList.projectName, done:false});
-		projectList.projectName = ' ';
+	projectController.addProject = function() {
+		projects.addProject({name:projectController.projectName, done:false})
+		projectController.projectName = ' ';
+		projects.saveProjects();
+	};
+
+	projectController.deleteSelected = function(){
+		projects.deleteSelected();
+		projects.saveProjects();
 	};
 		
 });
