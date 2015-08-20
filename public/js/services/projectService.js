@@ -2,19 +2,22 @@ angular.module('app').factory('projects', function(){
 
 	var projects = {}
 
-	try{
-		projects.list = JSON.parse(localStorage["projects"]);
-		projects.maxId = JSON.parse(localStorage["maxId"]);
-	}catch(e){
-		console.log("Could not load projects from storage");
-		projects.list = [];
-		projects.maxId = 0;
-	}
+	projects.loadProjects = function(){
+		try{
+			projects.list = JSON.parse(localStorage["projects"]);
+			projects.maxId = JSON.parse(localStorage["maxId"]);
+		}catch(e){
+			console.log("Could not load projects from storage");
+			projects.list = [];
+			projects.maxId = 0;
+		}
+	};
+
 
 	projects.addProject = function(project){
 		projects.maxId++;
-		console.log(projects.maxId);
 		project.id = projects.maxId;
+		project.done = false;
 		projects.list.push(project);
 	};
 

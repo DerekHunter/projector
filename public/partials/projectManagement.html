@@ -1,0 +1,17 @@
+
+<h1>Projects</h1>
+<div>	
+	<button class = "btn" ng-click = "projectController.deleteSelected()">Delete Selected</button>
+	<ul>
+		<div ng-repeat="project in projects.list track by project.id">
+			<li>
+				<input type="checkbox" class="checkbox" ng-model = "project.done">
+				<span>{{project.name}}</span>
+			</li>
+		</div>
+	</ul>
+	<form class = "form-inline" ng-submit="projectController.addProject()">
+		<input type="text" ng-model="projectController.projectName"  size="30" placeholder="add new project here">
+		<input type="submit" class = "bnt" value="add">
+	</form>
+</div>

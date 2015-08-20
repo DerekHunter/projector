@@ -1,13 +1,12 @@
 <h1>Total Hours for project: <span>{{hoursController.totalHours()}}</span></h1>	
 <table class = "table table-hover">
 	<tr>
-		<th>Project</th>
 		<th>Date</th>
 		<th>Hours</th>
 	</tr>
-	<tr ng-repeat="hours in hoursController.hours">
-		<td> {{hours.projectName}}</td>
+	<tr ng-repeat="hours in hours.list track by hours.id">
 		<td> {{hours.date}}</td>
 		<td><input type = "text" ng-model = "hours.hours"></td>
 	</tr>
 </table>
+<button class = "btn" ng-click = "hoursController.addRecord()">Add</button>

@@ -1,6 +1,7 @@
 angular.module('app').controller('projectController', function($scope, projects){
 	
 	var projectController = this;
+	projects.loadProjects();
 	$scope.projects = projects;
 	$scope.projectController = this;
 
